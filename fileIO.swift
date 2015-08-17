@@ -43,6 +43,20 @@ let docsDirectory : NSURL = fileManager.URLForDirector(directory: NSDocumentDire
 print("The fileManager method returned \(docsDirectory)")
 
 
+
+//read contents of a file:
+//1. get the documents directory
+let documentDir = NSFileManager.defaultManager(URLForDirectory: NSDocumentDirectory, inDomain: NSUserDomainMask, appropriateForURL:nil, create:false, error:nil)
+
+//2. create full path (i.e., add filename to directory path)
+let full = documentDir.URLByAppendingPathComponent("sample.txt")
+
+//3. read the contents of the file into a string:
+let content = NSString(contentsOfURL: full, encoding: NSUTF8StringEncoding, error:nil)
+// possible with Swift string instead of NSString?
+
+
+
 /*
 https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/InteractingWithObjective-CAPIs.html
 To instantiate an Objective-C class in Swift, you call one of its initializers with Swift syntax.
