@@ -44,7 +44,7 @@ print("The fileManager method returned \(docsDirectory)")
 
 
 
-//read contents of a file:
+//read contents of a file (and write back):
 //1. get the documents directory
 let documentDir = NSFileManager.defaultManager(URLForDirectory: NSDocumentDirectory, inDomain: NSUserDomainMask, appropriateForURL:nil, create:false, error:nil)
 
@@ -52,9 +52,15 @@ let documentDir = NSFileManager.defaultManager(URLForDirectory: NSDocumentDirect
 let full = documentDir.URLByAppendingPathComponent("sample.txt")
 
 //3. read the contents of the file into a string:
-let content = NSString(contentsOfURL: full, encoding: NSUTF8StringEncoding, error:nil)
+var content = NSString(contentsOfURL: full, encoding: NSUTF8StringEncoding, error:nil)
 // possible with Swift string instead of NSString?
 
+//4. Append data
+content.appendString("changed!") // is this the best syntax in Swift?
+
+//5. Create new file
+let saveLocation = documentDir.URLByAppendingPathComponent("saved.txt")
+content.write(toURL: saveLocation, atomically: true, encoding: NSUTF8StringEncoding, error: nil
 
 
 /*
