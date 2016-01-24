@@ -1,2 +1,2 @@
 # swiftFiles
-basic Swift file stuff picked up from Lynda (Objective-C Essential Training)
+basic Swift file stuff picked up from various locations or just figured out
