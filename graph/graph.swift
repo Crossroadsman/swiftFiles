@@ -29,6 +29,7 @@ struct Graph : Hashable {
             id = 0
             idList.append(id)
         } else {
+            // TODO: check syntax for getting last entry in array
             id = idList.last + 1
             idList.append(id)
         }
@@ -53,6 +54,7 @@ class Vertex : Hashable {
             id = 0
             idList.append(id)
         } else {
+            // TODO: check syntax for getting last entry in array
             id = idList.last + 1
             idList.append(id)
         }
@@ -77,6 +79,7 @@ class Edge : Hashable {
             id = 0
             idList.append(id)
         } else {
+            // TODO: check syntax for getting last entry in array
             id = idList.last + 1
             idList.append(id)
         }
