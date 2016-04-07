@@ -65,7 +65,7 @@ class Vertex : Hashable {
     }
     
     func addEdge(e: Edge) {
-        // TODO: make the addEdge method put the edge into this vertex's set, and put this vertex into e's set (creating the edge if necessary?)
+        // TODO: make the addEdge method put the edge into this vertex's set (and the corresponding vertex's set), and put this vertex into e's set (creating the edge if necessary?)
     
     }
     
