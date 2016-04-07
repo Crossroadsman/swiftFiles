@@ -94,8 +94,8 @@ class Edge : Hashable {
         }
     }
     
-    func addNode(n: Vertex) {
-        // TODO: make the addEdge method put the vertex into this Edge's set, and put this edge into n's set (creating the vertex if necessary?)
+    func addNodes(a: Vertex, _ b: Vertex) {
+        // TODO: make the addEdge method put the vertices into this Edge's set, and put this edge into a's and b's sets (creating the vertex if necessary?)
     
     }
     
