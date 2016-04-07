@@ -1,3 +1,7 @@
+// Creates a custom Graph type, an instance of which contains vertices (type: Vertex) and edges (type: Edge).
+// a vertex has a set of edges
+// an edge has a set of vertices and, optionally, a weight
+
 func ==(lhs: Graph, rhs: Graph) -> Bool {
     return lhs.id == rhs.id
 }
@@ -60,6 +64,11 @@ class Vertex : Hashable {
         }
     }
     
+    func addEdge(e: Edge) {
+        // TODO: make the addEdge method put the edge into this vertex's set, and put this vertex into e's set (creating the edge if necessary?)
+    
+    }
+    
 }
 
 class Edge : Hashable {
@@ -83,6 +92,11 @@ class Edge : Hashable {
             id = idList.last + 1
             idList.append(id)
         }
+    }
+    
+    func addNode(n: Vertex) {
+        // TODO: make the addEdge method put the vertex into this Edge's set, and put this edge into n's set (creating the vertex if necessary?)
+    
     }
     
 }
