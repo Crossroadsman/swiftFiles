@@ -1,14 +1,20 @@
 // Rational Number Type
 
-// *** WARNING ***
-// This is an early version
-// It is easy for a fractional components to be computed that would exceed Int.max
-// This could cause crashes or wrong data
-// Care must be taken when using this Type that numerators and denominators do not get too close to Int.max
-// (or even 3E9 which is approximately sqrt(Int.max))
+// TODO:
+// - documentation for all methods
+// - if possible, add safety for calcs that might exceed Int.max
 
 import Foundation
 
+/**
+ __*** WARNING ***__
+ 
+ This is an early version.
+ It is easy for a fractional components to be computed that would exceed `Int.max`.
+ This could cause crashes or wrong data.
+ Care must be taken when using this Type that numerators and denominators do not get too close to `Int.max`
+ (or even 3E9 which is approximately `sqrt(Int.max)`)
+ */
 struct Rational: Strideable, CustomStringConvertible {
     
     // Properties
@@ -182,5 +188,4 @@ struct Rational: Strideable, CustomStringConvertible {
         
     }
     
-       
 }
