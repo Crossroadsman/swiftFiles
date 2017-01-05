@@ -9,7 +9,9 @@
 import Foundation
 
 extension String {
-    
+    /**
+     - Returns: `characters.count`
+    */
     var length: Int {
         return self.characters.count
     }
@@ -27,6 +29,15 @@ extension String {
         }
         
         return Character(String(arr[i]))
+    }
+    
+    func substring(from: Int) -> String? {
+        
+        guard from < self.length && from >= 0 else {
+            return nil
+        }
+        
+        return "llo world"
     }
     
 }

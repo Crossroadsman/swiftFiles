@@ -13,6 +13,8 @@ enum Constants {
     static let helloWorld = "Hello world"
     static let helloWorldLength = 11
     static let helloWorldSecondCharacter: Character = "e"
+    static let substringStartPosition = 2
+    static let substring = "llo world"
 }
 
 class StringTests: XCTestCase {
@@ -58,6 +60,23 @@ class StringTests: XCTestCase {
     
     func test_StringSubstring_FromPosition_ReturnsSubstringStartingAtPosition() {
         
+        let from = Constants.substringStartPosition
+        let substring: String? = Constants.substring
+        XCTAssertEqual(testString.substring(from: from), substring)
+        
     }
+    
+    func test_StringSubstring_FromInvalidPosition_ReturnsNil() {
+        
+        // from is past end of string
+        var from = Constants.helloWorldLength + 1
+        XCTAssertNil(testString.substring(from: from))
+        
+        // from is before start of string
+        from = -1
+        XCTAssertNil(testString.substring(from: from))
+        
+    }
+    
 
 }
