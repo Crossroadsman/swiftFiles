@@ -9,11 +9,20 @@
 import XCTest
 @testable import StringExtensions
 
+enum Constants {
+    static let helloWorld = "Hello world"
+    static let helloWorldLength = 11
+    static let helloWorldSecondCharacter: Character = "e"
+}
+
 class StringTests: XCTestCase {
+    
+    var testString: String!
 
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        testString = Constants.helloWorld
     }
     
     override func tearDown() {
@@ -26,16 +35,14 @@ class StringTests: XCTestCase {
     
     func test_StringAt_ValidPosition_ReturnsCharacter() {
         
-        let testString = "hello world"
-        let testCharacter: Character? = "e" // position 1
+        let testCharacter: Character? = Constants.helloWorldSecondCharacter // position 1
         XCTAssertEqual(testString.at(position: 1), testCharacter)
         
     }
     
     func test_StringAt_InvalidPosition_ReturnsNil() {
         
-        let testString = "0123"
-        XCTAssertNil(testString.at(position: 4))
+        XCTAssertNil(testString.at(position: Constants.helloWorldLength))
         
     }
     
@@ -43,8 +50,14 @@ class StringTests: XCTestCase {
     //------------
     
     func test_StringLength_ReturnsLength() {
-        let testString = "hello world"
-        XCTAssertEqual(testString.length, 11)
+        XCTAssertEqual(testString.length, Constants.helloWorldLength)
+    }
+    
+    //MARK: substring()
+    //-----------------
+    
+    func test_StringSubstring_FromPosition_ReturnsSubstringStartingAtPosition() {
+        
     }
 
 }
