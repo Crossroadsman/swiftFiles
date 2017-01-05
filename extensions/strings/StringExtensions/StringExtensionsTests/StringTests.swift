@@ -13,8 +13,12 @@ enum Constants {
     static let helloWorld = "Hello world"
     static let helloWorldLength = 11
     static let helloWorldSecondCharacter: Character = "e"
-    static let substringStartPosition = 2
-    static let substring = "llo world"
+    
+    static let substrStartPosition = 2
+    static let substrFrom = "llo world"
+    
+    static let substrEndPosition = 9
+    static let substrTo = "Hello wor"
 }
 
 class StringTests: XCTestCase {
@@ -44,7 +48,11 @@ class StringTests: XCTestCase {
     
     func test_StringAt_InvalidPosition_ReturnsNil() {
         
+        // beyond range
         XCTAssertNil(testString.at(position: Constants.helloWorldLength))
+        
+        // negative
+        XCTAssertNil(testString.at(position: -1))
         
     }
     
@@ -55,26 +63,52 @@ class StringTests: XCTestCase {
         XCTAssertEqual(testString.length, Constants.helloWorldLength)
     }
     
-    //MARK: substring()
-    //-----------------
+    //MARK: substr()
+    //--------------
     
-    func test_StringSubstring_FromPosition_ReturnsSubstringStartingAtPosition() {
+    func test_StringSubstr_FromPosition_ReturnsSubstringStartingAtPosition() {
         
-        let from = Constants.substringStartPosition
-        let substring: String? = Constants.substring
-        XCTAssertEqual(testString.substring(from: from), substring)
+        let from = Constants.substrStartPosition
+        let substring: String? = Constants.substrFrom
+        
+        XCTAssertEqual(testString.substr(from: from), substring)
         
     }
     
-    func test_StringSubstring_FromInvalidPosition_ReturnsNil() {
+    
+    func test_StringSubstr_FromInvalidPosition_ReturnsNil() {
         
         // from is past end of string
         var from = Constants.helloWorldLength + 1
-        XCTAssertNil(testString.substring(from: from))
+        XCTAssertNil(testString.substr(from: from))
         
         // from is before start of string
         from = -1
-        XCTAssertNil(testString.substring(from: from))
+        XCTAssertNil(testString.substr(from: from))
+        
+    }
+    
+    
+    func test_StringSubStr_ToValidPosition_ReturnsSubstringEndingImmediatelyBeforePosition() {
+        
+        let to = Constants.substrEndPosition
+        let substring: String? = Constants.substrTo
+        
+        XCTAssertEqual(testString.substr(to: to), substring)
+        
+    }
+    
+    func test_StringSubStr_ToInvalidPosition_ReturnsNil() {
+        
+        // to is past end of string + 1
+        // (see the distinction between to and through (in, e.g., stride)
+        // for why to is the character beyond where we want to land
+        var to = Constants.helloWorldLength + 2
+        XCTAssertNil(testString.substr(to: to))
+        
+        // to is before start of string
+        to = -1
+        XCTAssertNil(testString.substr(to: to))
         
     }
     

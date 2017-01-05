@@ -24,20 +24,41 @@ extension String {
     func at(position i: Int) -> Character? {
         let arr = Array(self.characters)
         
-        guard i < arr.count else {
+        guard i < arr.count && i >= 0 else {
             return nil
         }
         
         return Character(String(arr[i]))
     }
     
-    func substring(from: Int) -> String? {
+    /**
+     - Parameter from: Int (default = 0), the position of the first character in the substring
+     - Parameter to: optional Int (default = nil), the position **after** the last character in the substring
+    */
+    func substr(from: Int = 0, to toOptional: Int? = nil) -> String? {
         
-        guard from < self.length && from >= 0 else {
+        let to: Int
+
+        let arr = Array(self.characters)
+        
+        switch toOptional {
+        case nil:
+            to = arr.count
+        case _ where toOptional! <= from:
+            return nil
+        case _ where toOptional! > arr.count:
+            return nil
+        default:
+            to = toOptional!
+        }
+        
+        guard from < arr.count && from >= 0 else {
             return nil
         }
         
-        return "llo world"
+        let subArr = Array(arr[from ..< to]).map { String($0) }
+        
+        return subArr.joined()
     }
     
 }
