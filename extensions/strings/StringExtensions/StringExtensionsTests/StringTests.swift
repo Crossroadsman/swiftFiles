@@ -6,6 +6,13 @@
 //  Copyright © 2017 Koumparos Software. All rights reserved.
 //
 
+/*
+ NOTE: Adding unit tests to Command Line Application projects in XCode is not intuitive.
+ See: https://otters.io/xctest-in-command-line-applications
+ 
+ In addition to the steps described in the link, also had to manually add each file under test to the test target (in the inspector pane)
+ */
+
 import XCTest
 @testable import StringExtensions
 
