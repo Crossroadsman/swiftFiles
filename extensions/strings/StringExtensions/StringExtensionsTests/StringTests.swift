@@ -119,5 +119,27 @@ class StringTests: XCTestCase {
         
     }
     
+    //MARK: fromRight
+    func test_StringFromRight_ToValidPosition_ReturnsValidCharacterAsString() {
+        
+        var validPos = 0
+        var validVal = "d"
+        XCTAssertEqual(testString.fromRight(validPos),validVal)
+        
+        validPos = 1
+        validVal = "l"
+        XCTAssertEqual(testString.fromRight(validPos),validVal)
+        
+    }
+    
+    func test_StringFromRight_ToInvalidPosition_ReturnsEmptyString() {
+        let expectedOutput = ""
+        var invalidPos = -1
+        XCTAssertEqual(testString.fromRight(invalidPos), expectedOutput)
+        
+        invalidPos = 100
+        XCTAssertEqual(testString.fromRight(invalidPos), expectedOutput)
+    }
+    
 
 }

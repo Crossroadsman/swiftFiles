@@ -61,4 +61,27 @@ extension String {
         return subArr.joined()
     }
     
+    /**
+     returns the character at position from Right (zero-based)
+     character is formatted as String
+     returns an empty String if the position is invalid
+     */
+    func fromRight(_ position: Int) -> String {
+        let chars = self.characters
+        let length = chars.count
+        
+        guard position >= 0 && position <= length - 1 else {
+            return ""
+        }
+        
+        // convert position to position from left
+        let p = (length - 1) - position
+        
+        // access as array
+        let a = Array(chars)[p]
+        
+        // convert back to String for convenience
+        return String(a)
+    }
+    
 }

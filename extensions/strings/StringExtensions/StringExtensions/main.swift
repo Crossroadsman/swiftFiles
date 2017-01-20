@@ -16,14 +16,20 @@ print(testString)
 print(testString.length)
 
 //at(position:)
-print(testString.at(position: 5))
-
-print(testString.at(position: 100))
-
-print(testString.at(position: -1))
+print(testString.at(position: -1) ?? "nil")
+print(testString.at(position: 0) ?? "nil")
+print(testString.at(position: 5) ?? "nil")
+print(testString.at(position: 100) ?? "nil")
 
 //substr(from: to:)
-print(testString.substr()) // should be whole string
-print(testString.substr(from: 3))
-print(testString.substr(to: 7))
-print(testString.substr(from: 3, to: 7))
+print(testString.substr() ?? "nil") // should be whole string
+print(testString.substr(from: 3) ?? "nil")
+print(testString.substr(to: 7) ?? "nil")
+print(testString.substr(from: 3, to: 7) ?? "nil")
+
+
+//fromRight()
+print(testString.fromRight(-1)) // should be ""
+print(testString.fromRight(0))
+print(testString.fromRight(5))
+print(testString.fromRight(15)) // should be ""
