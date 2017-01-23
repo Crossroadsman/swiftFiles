@@ -30,3 +30,8 @@ extension Double: Num {}
 extension Float: Num {}
 //etc
 
+
+// example of defining a function that is generic across all number types:
+func add<T: Num>(a: T, b: T) -> T {
+    return a + b
+}
