@@ -15,7 +15,7 @@ protocol Num {
     static func *(lhs: Self, rhs: Self) -> Self
     
     /*
-    // methods in Haskell not implemented in every number type
+    // methods in Haskell not already implemented in Swift for every number type
     // these would need to be implemented for each number type that wanted to conform to Num
     static func negate(_ a: Self) -> Self
     static func abs(_ a: Self) -> Self
