@@ -22,7 +22,7 @@ protocol Num {
     static func signum(_ a: Self) -> Self
     // not clear how the following could theoretically be implemented as Swift has no arbitrary size integer type
     // static func fromInteger(_ a: Integer) -> Self
-    
+    */
 }
 
 extension Int: Num {}
