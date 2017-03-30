@@ -67,6 +67,32 @@ class FileReaderTests: XCTestCase {
             XCTFail("unable to write file to begin test: \(error.localizedDescription)")
         }
         
+        // attempt to read using fileReader
+        do {
+            let testReadResult = try testFileReader.load(fileName: testFileName, atLocation: testUrl)
+            XCTAssertEqual(testString, testReadResult)
+        } catch {
+            XCTFail("unable to read file to test: \(error.localizedDescription)")
+        }
+        
+    }
+    
+    func test_utf8File_CanBeReadFromDisk() {
+        
+        // create the file
+        do {
+            try testString.write(to: testFullUrl, atomically: true, encoding: .utf8)
+        } catch {
+            XCTFail("unable to write file to begin test: \(error.localizedDescription)")
+        }
+        
+        // attempt to read using fileReader
+        do {
+            let testReadResult = try testFileReader.load(fileName: testFileName, atLocation: testUrl)
+            XCTAssertEqual(testString, testReadResult)
+        } catch {
+            XCTFail("unable to read file to test: \(error.localizedDescription)")
+        }
     }
 
 

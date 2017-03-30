@@ -27,4 +27,25 @@ struct FileReader {
         }
     }
     
+    func load(fileName: String, atLocation url: URL = FileReader.documentsUrl, encoding: String.Encoding? = nil) throws -> String {
+        
+        let fullUrl = url.appendingPathComponent(fileName)
+        
+        switch encoding {
+        case nil:
+            do {
+                return try String.init(contentsOf: fullUrl)
+            } catch {
+                throw error
+            }
+            
+        default:
+            do {
+                return try String.init(contentsOf: fullUrl, encoding: encoding!)
+            } catch {
+                throw error
+            }
+        }
+    }
+    
 }
