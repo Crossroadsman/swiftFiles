@@ -9,11 +9,20 @@
 import Foundation
 
 let fileReader = FileReader()
-let fileName = "csvtest.txt"
+//let fileName = "csvtest.txt"
+let fileName = "linkedin_connections_export_microsoft_outlook.csv"
+let encoding = String.Encoding.ascii
 
 do {
-    let fileData = try fileReader.load(fileName: fileName)
+    let fileData = try fileReader.load(fileName: fileName, encoding: encoding)
     print(fileData)
+    let records = CSVParser().parse(string: fileData)
+    for record in records {
+        for field in record {
+            print(field, terminator: " | ")
+        }
+        print("\n------------")
+    }
 } catch {
     print(error.localizedDescription)
 }

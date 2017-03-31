@@ -24,33 +24,17 @@ class CSVParserTests: XCTestCase {
         super.tearDown()
     }
 
-    func test_BreakLines_WhenSetNonStrict_ReturnsArrayOfLinesSplitByNewLine() {
+    func test_Parse_String_ReturnsArrayOfArrays() {
         
-        let testString = "\nThis\nIs\n\nA\n\r\nTest"
-        let testArray = ["This","Is","A","Test"]
-        print(testString)
+        let testString = "This,is,first,line\r\nThis,is,second,line"
+        let testArray: [[String]] = [["This","is","first","line"],["This","is","second","line"]]
         
-        XCTAssertEqual(testArray, parser.breakLines(string: testString))
+        for i in 0 ..< testArray.count {
+            XCTAssertEqual(testArray[i], parser.parse(string: testString)[i])
+        }
+        
+        
     }
     
-    func test_BreakLines_WhenSetStrict_ReturnsArrayOfLinesSplitByCRLF() {
-        
-        let testString = "\nThis\nIs\n\nA\n\r\nTest"
-        let testArray = ["\nThis\nIs\n\nA\n","Test"]
-        print(testString)
-        
-        XCTAssertEqual(testArray, parser.breakLines(string: testString, strict: true))
-    }
-    
-    /*
-    func test_BreakFields_ReturnsArrayOfFieldsSplitByComma() {
-        
-        let testString = "This,Is,A,Test"
-        let testArray = ["This","Is","A","Test"]
-        
-        
-        
-    }
- */
 
 }
