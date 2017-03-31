@@ -11,6 +11,9 @@
 		4EBE41F21E8DA20E002D635D /* FileReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBE41F11E8DA20E002D635D /* FileReaderTests.swift */; };
 		4EBE41F41E8DA56E002D635D /* FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBE41F31E8DA56E002D635D /* FileReader.swift */; };
 		4EBE41F51E8DA84E002D635D /* FileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBE41F31E8DA56E002D635D /* FileReader.swift */; };
+		4ED1F3321E8DB6860043A659 /* CSVParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1F3311E8DB6860043A659 /* CSVParserTests.swift */; };
+		4ED1F3341E8E06300043A659 /* CSVParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1F3331E8E06300043A659 /* CSVParser.swift */; };
+		4ED1F3351E8E06300043A659 /* CSVParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1F3331E8E06300043A659 /* CSVParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,6 +35,8 @@
 		4EBE41ED1E8D99BD002D635D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EBE41F11E8DA20E002D635D /* FileReaderTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileReaderTests.swift; sourceTree = "<group>"; };
 		4EBE41F31E8DA56E002D635D /* FileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileReader.swift; sourceTree = "<group>"; };
+		4ED1F3311E8DB6860043A659 /* CSVParserTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSVParserTests.swift; sourceTree = "<group>"; };
+		4ED1F3331E8E06300043A659 /* CSVParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSVParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +80,7 @@
 			children = (
 				4EBE41DE1E8D995C002D635D /* main.swift */,
 				4EBE41F31E8DA56E002D635D /* FileReader.swift */,
+				4ED1F3331E8E06300043A659 /* CSVParser.swift */,
 			);
 			path = "CSV Parser";
 			sourceTree = "<group>";
@@ -84,6 +90,7 @@
 			children = (
 				4EBE41ED1E8D99BD002D635D /* Info.plist */,
 				4EBE41F11E8DA20E002D635D /* FileReaderTests.swift */,
+				4ED1F3311E8DB6860043A659 /* CSVParserTests.swift */,
 			);
 			path = "CSV Parser Tests";
 			sourceTree = "<group>";
@@ -183,6 +190,7 @@
 			files = (
 				4EBE41F41E8DA56E002D635D /* FileReader.swift in Sources */,
 				4EBE41DF1E8D995C002D635D /* main.swift in Sources */,
+				4ED1F3341E8E06300043A659 /* CSVParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,6 +200,8 @@
 			files = (
 				4EBE41F51E8DA84E002D635D /* FileReader.swift in Sources */,
 				4EBE41F21E8DA20E002D635D /* FileReaderTests.swift in Sources */,
+				4ED1F3321E8DB6860043A659 /* CSVParserTests.swift in Sources */,
+				4ED1F3351E8E06300043A659 /* CSVParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +364,7 @@
 				4EBE41E41E8D995C002D635D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		4EBE41EE1E8D99BD002D635D /* Build configuration list for PBXNativeTarget "CSV Parser Tests" */ = {
 			isa = XCConfigurationList;
@@ -362,6 +373,7 @@
 				4EBE41F01E8D99BD002D635D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

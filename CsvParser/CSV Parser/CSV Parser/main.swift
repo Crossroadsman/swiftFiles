@@ -8,6 +8,17 @@
 
 import Foundation
 
+let fileReader = FileReader()
+let fileName = "csvtest.txt"
+
+do {
+    let fileData = try fileReader.load(fileName: fileName)
+    print(fileData)
+} catch {
+    print(error.localizedDescription)
+}
+
+
 // Illustration of reading and writing a file
 /*
 let str = "Hello, world"
