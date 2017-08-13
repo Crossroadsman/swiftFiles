@@ -1,8 +1,11 @@
+import Foundation
+
 struct Pen: CustomStringConvertible {
     
     //MARK: Properties
     //----------------
     
+    var name: String
     var cap: Cap?
     var barrel: Barrel
     
@@ -10,7 +13,7 @@ struct Pen: CustomStringConvertible {
     //------------------------------------------
     
     var description: String {
-        return "A pen with \(cap != nil ? "\(cap!)" : "no cap") and \(barrel)"
+        return "\(name): A pen with \(cap != nil ? "\(cap!)" : "no cap") and \(barrel)"
     }
     
 }
@@ -47,7 +50,7 @@ struct Cap: CustomStringConvertible {
     
     var description: String {
         
-        var baseDescription = "a cap with the following colours: \(colours) and made of \(materials)"
+        let baseDescription = "a cap with the following colours: \(colours) and made of \(materials)"
         
         guard artwork != nil else {
             return baseDescription
@@ -74,12 +77,14 @@ struct Barrel: CustomStringConvertible {
     //MARK: - Initialisers
     //--------------------
     
-    init(colours: [KSColour], materials: [Material]) {
+    init(nib: Nib, colours: [KSColour], materials: [Material]) {
+        self.nib = nib
         self.colours = colours
         self.materials = materials
     }
     
-    init(colours: [KSColour], materials: [Material], artwork: String) {
+    init(nib: Nib, colours: [KSColour], materials: [Material], artwork: String) {
+        self.nib = nib
         self.colours = colours
         self.materials = materials
         self.artwork = artwork
@@ -93,10 +98,10 @@ struct Barrel: CustomStringConvertible {
         let baseDescription = "a barrel with the following colours: \(colours) and made of \(materials)."
         
         guard artwork != nil else {
-            return baseDescription
+            return "\(baseDescription); having \(nib)"
         }
         
-        return "\(baseDescription) and featuring \(artwork!)"
+        return "\(baseDescription) and featuring \(artwork!); having \(nib)"
     }
     
 
@@ -222,6 +227,7 @@ enum NamedKSColour {
     static let gold = KSColour(name: "Gold", red: 0.8, green: 0.8, blue: 0.1)
     static let roseGold = KSColour(name: "Rose Gold", red: 0.9, green: 0.7, blue: 0.1)
     
+    static let green = KSColour(name: "Green", red: 0, green: 1, blue: 0)
     static let yellow = KSColour(name: "Yellow", red: 1, green: 1, blue: 0)
     static let red = KSColour(name: "Red", red: 1, green: 0, blue: 0)
     
@@ -237,6 +243,7 @@ enum NamedMaterials {
     static let aluminium = Material(name: "Aluminium")
     static let steel = Material(name: "Steel")
     static let ebonite = Material(name: "Ebonite")
+    static let goldPlate = Material(name: "Gold Plate")
     static let gold14k = Material(name: "Gold (14k)")
     static let gold18k = Material(name: "Gold (18k)")
     static let gold21k = Material(name: "Gold (21k)")
@@ -267,24 +274,72 @@ let pilotCustom743Cap = Cap(colours: [NamedKSColour.black], materials: [NamedMat
 let lamySafariCap = Cap(colours: [NamedKSColour.petrolBlue], materials: [NamedMaterials.plastic])
 
 
-// Barrels
-//---------------------
-
-
 // Nibs
 //---------------------
 let pilotMetropolitanNib = Nib(material: NamedMaterials.steel, colours: [NamedKSColour.silver], size: .medium, sizingBase: .japanese, shape: .round, flexibility: .hard)
 let twsbiEcoNib = Nib(material: NamedMaterials.steel, colours: [NamedKSColour.silver], size: .medium, sizingBase: .western, shape: .round, flexibility: .hard)
+let pilotNumber5Nib = Nib(material: NamedMaterials.gold14k, colours: [NamedKSColour.silver], size: .medium, sizingBase: .japanese, shape: .round, flexibility: .hard)
+let namikiFalconNib = Nib(material: NamedMaterials.gold14k, colours: [NamedKSColour.gold], size: .medium, sizingBase: .japanese, shape: .round, flexibility: .soft)
+let sailor1911Nib = Nib(material: NamedMaterials.gold14k, colours: [NamedKSColour.silver], size: .music, sizingBase: .japanese, shape: .round, flexibility: .hard)
+let namikiPenguinNib = Nib(material: NamedMaterials.gold14k, colours: [NamedKSColour.gold], size: .medium, sizingBase: .japanese, shape: .round, flexibility: .hard)
+let nakayaNib = Nib(material: NamedMaterials.gold14k, colours: [NamedKSColour.gold], size: .medium, sizingBase: .japanese, shape: .round, flexibility: .hard)
+let pilotVanishingPointNib = Nib(material: NamedMaterials.gold18k, colours: [NamedKSColour.black], size: .fine, sizingBase: .japanese, shape: .round, flexibility: .hard)
+let pilotMyu701Nib = Nib(material: NamedMaterials.steel, colours: [NamedKSColour.silver], size: .fine, sizingBase: .japanese, shape: .round, flexibility: .hard)
+let parker88Nib = Nib(material: NamedMaterials.goldPlate, colours: [NamedKSColour.gold], size: .medium, sizingBase: .western, shape: .round, flexibility: .hard)
+let parker45Nib = Nib(material: NamedMaterials.goldPlate, colours: [NamedKSColour.gold], size: .medium, sizingBase: .western, shape: .round, flexibility: .hard)
+let pelikanM1000Nib = Nib(material: NamedMaterials.gold18k, colours: [NamedKSColour.gold, NamedKSColour.silver], size: .fine, sizingBase: .western, shape: .round, flexibility: .hard)
+let sailorImperialBlackNib = Nib(material: NamedMaterials.gold21k, colours: [NamedKSColour.black], size: .medium, sizingBase: .japanese, shape: .round, flexibility: .hard)
+let pilotNumber15Nib = Nib(material: NamedMaterials.gold14k, colours: [NamedKSColour.gold], size: .fine, sizingBase: .japanese, shape: .round, flexibility: .soft)
+let lamySafariNib = Nib(material: NamedMaterials.steel, colours: [NamedKSColour.black], size: .medium, sizingBase: .western, shape: .round, flexibility: .hard)
+
+
+// Barrels
+//---------------------
+let silverPilotMetropolitanBarrel = Barrel(nib: pilotMetropolitanNib, colours: [NamedKSColour.silver], materials: [NamedMaterials.genericAlloy])
+let goldPilotMetropolitanBarrel = Barrel(nib: pilotMetropolitanNib, colours: [NamedKSColour.gold], materials: [NamedMaterials.genericAlloy])
+let whiteTwsbiBarrel = Barrel(nib: twsbiEcoNib, colours: [NamedKSColour.clear, NamedKSColour.white], materials: [NamedMaterials.plastic])
+let pilotCustomHeritage92Barrel = Barrel(nib: pilotNumber5Nib, colours: [NamedKSColour.clear], materials: [NamedMaterials.plastic])
+let namikiFalconBarrel = Barrel(nib: namikiFalconNib, colours: [NamedKSColour.black], materials: [NamedMaterials.plastic])
+let sailor1911Barrel = Barrel(nib: sailor1911Nib, colours: [NamedKSColour.yellow], materials: [NamedMaterials.plastic])
+let namikiPenguinBarrel = Barrel(nib: namikiPenguinNib, colours: [NamedKSColour.black], materials: [NamedMaterials.plastic], artwork: "Maki-e depictions of snowflakes and origami penguins")
+let nakayaBarrel = Barrel(nib: nakayaNib, colours: kuroTamenuri, materials: [NamedMaterials.ebonite], artwork: "Taka Maki-e pink lotus flower")
+let pilotVanishingPointBarrel = Barrel(nib: pilotVanishingPointNib, colours: [NamedKSColour.black], materials: [NamedMaterials.plastic])
+let pilotMyu701Barrel = Barrel(nib: pilotMyu701Nib, colours: [NamedKSColour.silver], materials: [NamedMaterials.steel])
+let parker88Barrel = Barrel(nib: parker88Nib, colours: [NamedKSColour.black], materials: [NamedMaterials.plastic])
+let parker45Barrel = Barrel(nib: parker45Nib, colours: [NamedKSColour.silver], materials: [NamedMaterials.steel])
+let pelikanM1000Barrel = Barrel(nib: pelikanM1000Nib, colours: [NamedKSColour.green, NamedKSColour.black], materials: [NamedMaterials.plastic])
+let sailorImperialBlackBarrel = Barrel(nib: sailorImperialBlackNib, colours: [NamedKSColour.black], materials: [NamedMaterials.plastic])
+let pilotCustom743Barrel = Barrel(nib: pilotNumber15Nib, colours: [NamedKSColour.black], materials: [NamedMaterials.plastic])
+let lamySafariBarrel = Barrel(nib: lamySafariNib, colours: [NamedKSColour.petrolBlue], materials: [NamedMaterials.plastic])
+
 
 // Pens
 //----------------------
-let silverPilotMetropolitan = Pen(cap: Cap(colours: [NamedKSColour.silver], materials: [NamedMaterials.genericAlloy]), barrel: Barrel(colours: [NamedKSColour.silver], materials: [NamedMaterials.genericAlloy], nib: pilotMetropolitanNib))
-let goldPilotMetropolitan = Pen(cap: Cap(colours: [NamedKSColour.gold], materials: [NamedMaterials.genericAlloy]), barrel: Barrel(colours: [NamedKSColour.gold], materials: [NamedMaterials.genericAlloy], nib: pilotMetropolitanNib))
-let twsbiEco = Pen(cap: Cap(colours: [NamedKSColour.white], materials: [NamedMaterials.plastic]), barrel: Barrel(colours: [NamedKSColour.clear, NamedKSColour.white], materials: [NamedMaterials.plastic], nib: twsbiEcoNib))
+let silverPilotMetropolitan = Pen(name: "Pilot Metropolitan (silver)", cap: silverPilotMetropolitanCap, barrel: silverPilotMetropolitanBarrel)
+let goldPilotMetropolitan = Pen(name: "Pilot Metropolitan (gold)", cap: goldPilotMetropolitanCap, barrel: goldPilotMetropolitanBarrel)
+let twsbiEco = Pen(name: "TWSBI Eco", cap: whiteTwsbiCap, barrel: whiteTwsbiBarrel)
+let pilotCustomHeritage92 = Pen(name: "Pilot Custom Heritage 92", cap: pilotCustomHeritage92Cap, barrel: pilotCustomHeritage92Barrel)
+let namikiFalcon = Pen(name: "Namiki Falcon", cap: namikiFalconCap, barrel: namikiFalconBarrel)
+let sailor1911 = Pen(name: "Sailor 1911 Demonstrator", cap: sailor1911Cap, barrel: sailor1911Barrel)
+let namikiPenguin = Pen(name: "Namiki Nippon Tradition Origami Penguin", cap: namikiPenguinCap, barrel: namikiPenguinBarrel)
+let nakaya = Pen(name: "Nakaya Portable Writer Lotus Flower", cap: nakayaCap, barrel: nakayaBarrel)
+let pilotVanishingPoint = Pen(name: "Pilot Vanishing Point", cap: nil, barrel: pilotVanishingPointBarrel)
+let pilotMyu701 = Pen(name: "Pilot Myu 701", cap: pilotMyu701Cap, barrel: pilotMyu701Barrel)
+let parker88 = Pen(name: "Parker 88", cap: parker88Cap, barrel: parker88Barrel)
+let parker45 = Pen(name: "Parker 45", cap: parker45Cap, barrel: parker45Barrel)
+let pelikanM1000 = Pen(name: "Pelikan M1000", cap: pelikanM1000Cap, barrel: pelikanM1000Barrel)
+let sailorImperialBlack = Pen(name: "Sailor Imperial Black", cap: sailorImperialBlackCap, barrel: sailorImperialBlackBarrel)
+let pilotCustom743 = Pen(name: "Pilot Custom 743", cap: pilotCustom743Cap, barrel: pilotCustom743Barrel)
+let lamySafari = Pen(name: "Lamy Safari", cap: lamySafariCap, barrel: lamySafariBarrel)
 
 
+let myPens = [silverPilotMetropolitan, goldPilotMetropolitan, twsbiEco, pilotCustomHeritage92, namikiFalcon, sailor1911, namikiPenguin, nakaya, pilotVanishingPoint, pilotMyu701, parker88, parker45, pelikanM1000, sailorImperialBlack, pilotCustom743, lamySafari]
 
-let myPens = [silverPilotMetropolitan, goldPilotMetropolitan, twsbiEco]
 
+print(myPens[0])
 
-print(namikiPenguinCap)
+print(myPens[1].barrel.nib)
+
+for pen in myPens {
+    print(pen)
+}
