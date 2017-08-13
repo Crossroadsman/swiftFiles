@@ -61,22 +61,45 @@ struct Cap: CustomStringConvertible {
 
 struct Barrel: CustomStringConvertible {
     
-    //MARK: - Conform to CustomStringConvertible
-    //------------------------------------------
-    
-    var description: String {
-        return "a barrel with the following colours: \(colours) and made of \(materials). Having a \(nib)."
-    }
-    
     // The colours of a particular instance, not the colours of the range
     var colours: [KSColour]
     
     // The materials of a particular instance, not the materials of the range
     var materials: [Material]
     
+    var artwork: String?
     
     var nib: Nib
     
+    //MARK: - Initialisers
+    //--------------------
+    
+    init(colours: [KSColour], materials: [Material]) {
+        self.colours = colours
+        self.materials = materials
+    }
+    
+    init(colours: [KSColour], materials: [Material], artwork: String) {
+        self.colours = colours
+        self.materials = materials
+        self.artwork = artwork
+    }
+    
+    //MARK: - Conform to CustomStringConvertible
+    //------------------------------------------
+    
+    var description: String {
+        
+        let baseDescription = "a barrel with the following colours: \(colours) and made of \(materials)."
+        
+        guard artwork != nil else {
+            return baseDescription
+        }
+        
+        return "\(baseDescription) and featuring \(artwork!)"
+    }
+    
+
     
 }
 
@@ -235,7 +258,13 @@ let namikiFalconCap = Cap(colours: [NamedKSColour.black], materials: [NamedMater
 let sailor1911Cap = Cap(colours: [NamedKSColour.yellow], materials: [NamedMaterials.plastic])
 let namikiPenguinCap = Cap(colours: [NamedKSColour.black], materials: [NamedMaterials.plastic], artwork: "Maki-e origami penguins and snowflakes")
 let nakayaCap = Cap(colours: kuroTamenuri, materials: [NamedMaterials.ebonite])
-//let
+let pilotMyu701Cap = Cap(colours: [NamedKSColour.silver], materials: [NamedMaterials.steel])
+let parker88Cap = Cap(colours: [NamedKSColour.black], materials: [NamedMaterials.plastic])
+let parker45Cap = Cap(colours: [NamedKSColour.silver], materials: [NamedMaterials.steel])
+let pelikanM1000Cap = Cap(colours: [NamedKSColour.black], materials: [NamedMaterials.plastic])
+let sailorImperialBlackCap = Cap(colours: [NamedKSColour.black], materials: [NamedMaterials.plastic])
+let pilotCustom743Cap = Cap(colours: [NamedKSColour.black], materials: [NamedMaterials.plastic])
+let lamySafariCap = Cap(colours: [NamedKSColour.petrolBlue], materials: [NamedMaterials.plastic])
 
 
 // Barrels
