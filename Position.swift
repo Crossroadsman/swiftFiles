@@ -71,6 +71,28 @@ struct Position: Equatable {
         self.z = z
     }
     
+    /**
+    This is a non-throwing setter for a Position.
+    If, as is typical, the setter completes successfully, it returns `true`,
+    If the setter fails with an out-of-bounds error (the kind of error that is the reason that the primary setter is `throwing`) it 
+    returns false,
+    If the setter fails for any other reason, it will fatalError
+    */ 
+    public mutating func quickSetPosition(x: Int, y: Int, z: Int) -> Bool {
+        
+        do {
+            try self.setPosition(x: x, y: y, z:z)
+        } catch PositionError.outOfBounds(let errorDetails) {
+            print("(x: \(x), y: \(y), z: \(z)) is out of bounds: \(errorDetails.axis) must be between \(errorDetails.minValue) and \(errorDetails.maxValue)"
+                  return false
+        } catch {
+            print("Some unexpected error (not an out of bounds error) occurred.")
+            fatalError()
+        }
+        return true
+        
+    }
+    
     //MARK: - Other Methods
     //---------------------
     /**
@@ -108,6 +130,8 @@ struct Position: Equatable {
             return false
         }
     }
+    
+        
 }
 
 // EXAMPLES
